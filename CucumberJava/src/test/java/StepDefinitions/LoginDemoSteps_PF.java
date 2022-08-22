@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.cucumber.java.en.*;
+import pagefactory.EmployeeSearchPage;
 import pagefactory.HomePage_PF;
 import pagefactory.LoginPage_PF;
 
@@ -16,6 +17,7 @@ public class LoginDemoSteps_PF {
 
 	WebDriver driver = null;
 	LoginPage_PF login;
+	EmployeeSearchPage es;
 	HomePage_PF home;
 
 	@Given("browser is open")
@@ -41,10 +43,10 @@ public class LoginDemoSteps_PF {
 		
 	}
 
-	@And("user is on login page")
-	public void user_is_on_login_page() {
+	@And("user is navigated to register page")
+	public void user_is_on_register_page() {
 		
-		driver.navigate().to("https://example.testproject.io/web/");
+		driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		
 	}
 
@@ -69,18 +71,47 @@ public class LoginDemoSteps_PF {
 		// driver.findElement(By.id("login")).click();
 	}
 
+//	@Then("logout link is displayed")
+//	public void logoutLinkIsDisplayed() {
+//
+//	}
 
-	@Then("user is navigated to the home page")
-	public void user_is_navigated_to_the_home_page() throws InterruptedException {
-		
-		//home.checkLogoutIsDisplayed();
-		 driver.findElement(By.id("logout")).isDisplayed();
-		
-		Thread.sleep(2000);
-		driver.close();
-		driver.quit();
-		
+	@When("user submits {string} and {string}")
+	public void userSubmitsAnd(String arg0, String arg1) {
+		es.enterUsername(arg0);
+		es.enterEmpId(arg1);
+
 	}
+
+	@When("user submitsEtS {string} and {string}")
+	public void userSubmitsEtSAnd(String arg0, String arg1) {
+		es.enterStatus(arg0);
+		es.enterSupervisor_name(arg1);
+	}
+
+	@When("user submitsJTU {string} and {string}")
+	public void userSubmitsJTUAnd(String arg0, String arg1) {
+		es.Enter_job_title_dropDown(arg0);
+		es.enter_sub_unit_dropdown(arg1);
+	}
+
+	@When("user clicks on Submit link")
+	public void userClicksOnSubmitLink() {
+		es.clickOnSubmit();
+	}
+
+
+//	@Then("user is navigated to the home page")
+//	public void user_is_navigated_to_the_home_page() throws InterruptedException {
+//
+//		//home.checkLogoutIsDisplayed();
+//		 driver.findElement(By.id("logout")).isDisplayed();
+//
+//		Thread.sleep(2000);
+//		driver.close();
+//		driver.quit();
+//
+//	}
 
 
 

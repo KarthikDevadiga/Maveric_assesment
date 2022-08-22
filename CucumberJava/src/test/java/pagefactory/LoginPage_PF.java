@@ -12,14 +12,14 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class LoginPage_PF {
 	
-	@FindBy(id = "name")
+	@FindBy(className = "oxd-input--active")
 	@CacheLookup
 	WebElement txt_username;
 	
-	@FindBy(id = "password")
+	@FindBy(className = "oxd-input--active")
 	WebElement txt_password;
 
-	@FindBy(id = "login")
+	@FindBy(className = "orangehrm-login-button")
 	WebElement btn_login;
 	
 	@FindBy(partialLinkText = "raghav")
