@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.cucumber.java.en.*;
+import pagefactory.AddingNewEmp_PF;
 import pagefactory.EmployeeSearchPage;
 import pagefactory.HomePage_PF;
 import pagefactory.LoginPage_PF;
@@ -18,6 +19,10 @@ public class LoginDemoSteps_PF {
 	WebDriver driver = null;
 	LoginPage_PF login;
 	EmployeeSearchPage es;
+
+	AddingNewEmp_PF ap;
+
+
 	HomePage_PF home;
 
 	@Given("browser is open")
@@ -98,6 +103,35 @@ public class LoginDemoSteps_PF {
 	@When("user clicks on Submit link")
 	public void userClicksOnSubmitLink() {
 		es.clickOnSubmit();
+	}
+
+	@Given("user is on add Employee page page")
+	public void userIsOnAddEmployeePagePage() {
+		driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee");
+
+
+	}
+
+	@When("user submits first name {string}")
+	public void userSubmitsFirstName(String arg0) {
+		ap.enterFirstName(arg0);
+	}
+
+	@When("user submits middle name {string}")
+	public void userSubmitsMiddleName(String arg0) {
+		ap.enterMiddleName(arg0);
+
+	}
+
+	@When("user submits last name {string}")
+	public void userSubmitsLastName(String arg0) {
+		ap.enterLastName(arg0);
+
+	}
+
+	@When("user clicks on Save link")
+	public void userClicksOnSaveLink() {
+		ap.clickSave();
 	}
 
 
